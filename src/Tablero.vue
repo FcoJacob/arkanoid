@@ -1,10 +1,23 @@
 <template>
-  <div id="tablero"><router-view/></div>
+  <div id="tablero">
+    <drawerBricks></drawerBricks>
+    <ball></ball>
+    <player></player>
+  </div>
 </template>
 
 <script>
+import DrawerBricks from './components/DrawerBricks'
+import Ball from './components/Ball'
+import Player from './components/Player'
+
 export default {
-  name: 'tablero'
+  name: 'tablero',
+  components: {
+    DrawerBricks,
+    Ball,
+    Player
+  }
 }
 </script>
 
