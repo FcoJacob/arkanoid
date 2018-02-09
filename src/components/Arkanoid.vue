@@ -32,10 +32,8 @@ export default {
     overflow: hidden;
     background: grey; 
     display: flex;    
-    flex-wrap: wrap;   
-    justify-content: center;
-    align-content: center;
-    align-items: center;
+    flex-wrap: wrap;     
+    align-content: center;    
   }
 
   .brick{
