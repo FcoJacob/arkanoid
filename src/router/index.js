@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/Arkanoid'
+import Arkanoid from '@/components/Arkanoid'
 
 Vue.use(Router)
 
