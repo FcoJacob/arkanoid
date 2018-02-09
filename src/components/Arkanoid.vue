@@ -1,11 +1,20 @@
 <template>
-  <div class="tablero"><div class="container"><div class="brick"></div></div><div class="ball"></div><div class="player"></div></div>
+  <div class="tablero">
+    <div class="container"><div class="brick"></div></div>
+    <div class="ball"></div>
+    <div class="player"></div>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'Arkanoid',
-  data: function () {}}
+  data: function () {
+    return {
+      msg: 'Bienvenido al Arkanoid'
+    }
+  }
+}
 </script>
 
 <style scoped>
