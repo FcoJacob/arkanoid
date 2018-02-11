@@ -1,6 +1,15 @@
 <template>
   <div class="drawerBricks">
-    <div class="brick"></div>
+    <div v-for="(levels, index) in level" :key='index'>
+        <div :class="{brickDestroy: brick.life == 0}" v-for="(brick, key) in levels" :key='key'>
+          <transition
+            appear
+            appear-active-class="animated zoomIn"
+          >
+            <div class="brick" :class="{brickDestroy: brick.life == 0, levelBrickOne: brick.life == 1, levelBrickTwo: brick.life == 2, levelBrickThree: brick.life == 3}" @click="destroyBrick(brick)">{{ brick.life }}</div>
+          </transition>
+        </div>
+    </div>
   </div>
 </template>
 
@@ -9,13 +18,40 @@ export default {
   name: 'drawerBricks',
   data: function () {
     return {
-      msg: 'Bienvenido al Arkanoid'
+      level: [
+        [{ life: 0 }, { life: 3 }, { life: 3 }, { life: 3 }, { life: 2 }, { life: 2 }, { life: 2 }, { life: 2 }, { life: 1 }, { life: 1 }, { life: 1 }, { life: 1 }], // this line with life: 0 means empty space
+        [{ life: 0 }, { life: 3 }, { life: 3 }, { life: 3 }, { life: 2 }, { life: 2 }, { life: 2 }, { life: 2 }, { life: 1 }, { life: 1 }, { life: 1 }, { life: 1 }],
+        [{ life: 0 }, { life: 3 }, { life: 3 }, { life: 3 }, { life: 2 }, { life: 2 }, { life: 2 }, { life: 2 }, { life: 1 }, { life: 1 }, { life: 1 }, { life: 1 }],
+        [{ life: 0 }, { life: 3 }, { life: 3 }, { life: 3 }, { life: 2 }, { life: 2 }, { life: 2 }, { life: 2 }, { life: 1 }, { life: 1 }, { life: 1 }, { life: 1 }],
+        [{ life: 0 }, { life: 3 }, { life: 3 }, { life: 3 }, { life: 2 }, { life: 2 }, { life: 2 }, { life: 2 }, { life: 1 }, { life: 1 }, { life: 1 }, { life: 1 }],
+        [{ life: 0 }, { life: 3 }, { life: 3 }, { life: 3 }, { life: 2 }, { life: 2 }, { life: 2 }, { life: 2 }, { life: 1 }, { life: 1 }, { life: 1 }, { life: 1 }],
+        [{ life: 0 }, { life: 3 }, { life: 3 }, { life: 3 }, { life: 2 }, { life: 2 }, { life: 2 }, { life: 2 }, { life: 1 }, { life: 1 }, { life: 1 }, { life: 1 }],
+        [{ life: 0 }, { life: 3 }, { life: 3 }, { life: 3 }, { life: 2 }, { life: 2 }, { life: 2 }, { life: 2 }, { life: 1 }, { life: 1 }, { life: 1 }, { life: 1 }],
+        [{ life: 0 }, { life: 3 }, { life: 3 }, { life: 3 }, { life: 2 }, { life: 2 }, { life: 2 }, { life: 2 }, { life: 1 }, { life: 1 }, { life: 1 }, { life: 1 }]
+      ],
+      life: 0
+    }
+  },
+  computed: {
+    deleteBrick () {
+      for (let index = 0; index < this.level.length; index++) {
+        return this.level[index].filter((level) => level.life !== this.life)
+      }
+    }
+  },
+  methods: {
+    destroyBrick (brick) {
+      brick.life--
     }
   }
 }
 </script>
 
-<style>
-  .drawerBricks{width: 95%;height: 30vh;margin: 40px auto;position: relative;overflow: hidden;background: grey;display: flex;flex-wrap: wrap;align-content: center;}
-  .brick{margin: 0 auto;min-width: 60px;max-height: 20px;background: blue;border: 1px solid black;position: relative;flex-basis: auto;}
+<style scoped>
+  .drawerBricks{width: 95%;height: 30vh;margin: 40px auto;position: relative;overflow: hidden;display: flex;flex-direction: row-reverse;flex-wrap: wrap;justify-content: center;align-items: center;align-content: center;}
+  .brick{margin: 0 auto;width: 80px;height: 24px;position: relative;flex-basis: auto;text-align: center;border: 0.5px solid black;}
+  .brickDestroy{visibility:hidden;}
+  .levelBrickOne{background-image: url("../assets/brick1.png");background-size: cover;}
+  .levelBrickTwo{background-image: url("../assets/brick2.png");background-size: cover;}
+  .levelBrickThree{background-image: url("../assets/brick3.png");background-size: cover;}
 </style>

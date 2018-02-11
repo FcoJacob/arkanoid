@@ -2,7 +2,7 @@
   <div id="tablero">
     <drawerBricks></drawerBricks>
     <ball></ball>
-    <player></player>
+    <player @keydown.left="Player.moveLeft()"></player>
   </div>
 </template>
 
@@ -21,6 +21,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   #tablero{width: 100%;height: 100vh;position: absolute;background-image: url("./assets/espacio.png");border-radius: 5px;}
 </style>
