@@ -2,7 +2,7 @@
   <div id="tablero">
     <drawerBricks></drawerBricks>
     <ball></ball>
-    <player @keydown.left="Player.moveLeft()"></player>
+    <player></player>
   </div>
 </template>
 

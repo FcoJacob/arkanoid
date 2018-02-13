@@ -1,5 +1,5 @@
 <template>
-  <div class="player" :style="{left: lefts+'%'}">&nbsp;</div>
+  <div class="player"></div>
 </template>
 
 <script>
@@ -7,12 +7,7 @@ export default {
   name: 'player',
   data: function () {
     return {
-      lefts: 44
-    }
-  },
-  methods: {
-    moveLeft: function () {
-      this.lefts = this.lefts - 1
+      left: 44
     }
   }
 }
