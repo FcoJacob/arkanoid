@@ -1,5 +1,5 @@
 <template>
-  <div class="player"></div>
+  <div class="player" :style="{left: left+'%'}" v-on:click="moveLeft()"></div>
 </template>
 
 <script>
@@ -8,6 +8,16 @@ export default {
   data: function () {
     return {
       left: 44
+    }
+  },
+  methods: {
+    moveLeft () {
+      console.log('Izquierda')
+      this.left -= 1
+    },
+    moveRight () {
+      console.log('Derecha')
+      this.left += 1
     }
   }
 }
