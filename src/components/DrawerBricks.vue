@@ -6,7 +6,7 @@
             appear
             appear-active-class="animated zoomIn"
           >
-            <div class="brick" :class="{brickDestroy: brick.life == 0, levelBrickOne: brick.life == 1, levelBrickTwo: brick.life == 2, levelBrickThree: brick.life == 3}" @click="destroyBrick(brick)">{{ brick.life }}</div>
+            <div class="brick" :class="{brickDestroy: brick.life == 0, levelBrickOne: brick.life == 1, levelBrickTwo: brick.life == 2, levelBrickThree: brick.life == 3}" @click="destroyBrick(brick)"></div>
           </transition>
         </div>
     </div>

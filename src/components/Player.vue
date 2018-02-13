@@ -1,5 +1,8 @@
 <template>
-  <div class="player" :style="{left: left+'%'}" v-on:click="moveLeft()"></div>
+  <div class="player" :style="{left: left+'%'}">
+    <div id="x">{{ x }}</div>
+    <div id="y">{{ y }}</div>
+  </div>
 </template>
 
 <script>
@@ -7,22 +10,31 @@ export default {
   name: 'player',
   data: function () {
     return {
-      left: 44
+      left: 44,
+      x: '',
+      y: ''
     }
   },
+  mounted: function () {
+    this.moveMouse()
+  },
   methods: {
-    moveLeft () {
-      console.log('Izquierda')
-      this.left -= 1
+    moveMouse: function (event) {
+      event = event || window.event
+      this.x = window.event.clientX
+      this.y = window.event.clientY
     },
-    moveRight () {
-      console.log('Derecha')
-      this.left += 1
+    keyDownHandler: function (e) {
+      if (e.keyCode === 37) {
+        this.left -= 1
+      } else if (e.keyCode === 39) {
+        this.left += 1
+      }
     }
   }
 }
 </script>
 
 <style scoped>
-  .player{bottom: calc(48px - 12.5px);left: calc(50% - 75px);width: 150px;height: 25px;position: relative;background-image: url("../assets/player.png");background-size: cover;position: absolute;}
+  .player{bottom: calc(48px - 12.5px);left: 50%;width: 150px;height: 25px;position: relative;background-image: url("../assets/player.png");background-size: cover;position: absolute;}
 </style>
